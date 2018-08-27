@@ -2,22 +2,18 @@
 PowerTune is a Modern Gauge Display for written in QT5.8 and supports the following ECU's:
 
 
-#### Free ECU's
-
-* Apexi Power FC  (via Serialport)
-* Adaptronic Select ECU (via Modbus)
-
-#### Additional ECU's supported via Daemon (these are items you can purchase from us)
-* Adaptronic Modular ECU's (Adaptronic CAN Protocol)
+#### ECU's supported via Daemon (these are items you can purchase from us)
+* Adaptronic Modular ECU's (Haltech V2 CAN Protocol)
 * Haltech CAN V2 Protocol comapatible ECU's 
 * Nissan Consult I
 * OBD II (Serial ELM2377 Cable only)
+* Apexi Power FC  (via Serialport)
+
 
 
 Testet Platforms :
 
 Ubuntu 17.04 
-Windows 10 
 Raspbian Jessie 2017-04-10
 Raspbian Stretch
 
