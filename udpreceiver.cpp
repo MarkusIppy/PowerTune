@@ -768,16 +768,16 @@ void udpreceiver::processPendingDatagrams()
             //MAP P
             break;
         case 275:
-            //
+            m_dashboard->setAN1(Value);
             break;
         case 276:
-            //
+            m_dashboard->setAN2(Value);
             break;
         case 277:
-            //
+            m_dashboard->setAN3(Value);
             break;
         case 278:
-            //
+            m_dashboard->setAN4(Value);
             break;
         case 279:
             //

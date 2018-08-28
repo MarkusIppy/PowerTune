@@ -7,6 +7,10 @@ QVector<int>averageSpeed(0);
 QVector<int>averageRPM(0);
 int avgspeed;
 int avgrpm;
+qreal auxval1;
+qreal auxval2;
+qreal auxval3;
+qreal auxval4;
 
 DashBoard::DashBoard(QObject *parent)
     : QObject(parent)
@@ -59,6 +63,10 @@ DashBoard::DashBoard(QObject *parent)
     , m_auxcalc2(0.00)
     , m_auxcalc3(0.00)
     , m_auxcalc4(0.00)
+    , m_AN1(0.00)
+    , m_AN2(0.00)
+    , m_AN3(0.00)
+    , m_AN4(0.00)
 
     // Sensor Info FD3S
     , m_sens1(0.00)
@@ -655,6 +663,38 @@ void DashBoard::setauxcalc4(const qreal &auxcalc4)
     emit auxcalc4Changed(auxcalc4);
 }
 
+void DashBoard::setAN1(const qreal &AN1)
+{
+    if (m_AN1 == AN1)
+        return;
+    m_AN1 = AN1;
+    m_auxcalc1= (((((auxval2-auxval1)*0.2) * (m_AN1 - m_AN2))) + auxval1);
+    emit auxcalc1Changed(m_auxcalc1);
+    emit AN1Changed(AN1);
+}
+void DashBoard::setAN2(const qreal &AN2)
+{
+    if (m_AN2 == AN2)
+        return;
+    m_AN2 = AN2;
+    emit AN2Changed(AN2);
+}
+void DashBoard::setAN3(const qreal &AN3)
+{
+    if (m_AN3 == AN3)
+        return;
+    m_AN3 = AN3;
+    m_auxcalc2 = ((((auxval4-auxval3)*0.2) * (m_AN3 - m_AN4)) + auxval3);
+    emit auxcalc2Changed(m_auxcalc2);
+    emit AN3Changed(AN3);
+}
+void DashBoard::setAN4(const qreal &AN4)
+{
+    if (m_AN4 == AN4)
+        return;
+    m_AN4 = AN4;
+    emit AN4Changed(AN4);
+}
 
 //Sensor info
 
@@ -2325,6 +2365,16 @@ void DashBoard::setecu(const QString &ecu)
     emit ecuChanged(ecu);
 }
 
+void DashBoard::Auxcalc (const QString &unitaux1,const qreal &an1V0,const qreal &an2V5,const QString &unitaux2,const qreal &an3V0,const qreal &an4V5)
+{
+    auxval1 = an1V0;
+    auxval2 = an2V5;
+    auxval3 = an3V0;
+    auxval4 = an4V5;
+    QString Auxunit1 = unitaux1;
+    QString Auxunit2 = unitaux2;
+
+}
 //
 
 
@@ -2383,6 +2433,10 @@ qreal DashBoard::auxcalc1() const { return m_auxcalc1; }
 qreal DashBoard::auxcalc2() const { return m_auxcalc2; }
 qreal DashBoard::auxcalc3() const { return m_auxcalc3; }
 qreal DashBoard::auxcalc4() const { return m_auxcalc4; }
+qreal DashBoard::AN1() const { return m_AN1; }
+qreal DashBoard::AN2() const { return m_AN2; }
+qreal DashBoard::AN3() const { return m_AN3; }
+qreal DashBoard::AN4() const { return m_AN4; }
 
 //Sensor info
 qreal DashBoard::sens1() const { return m_sens1; }

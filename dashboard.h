@@ -66,7 +66,10 @@ class DashBoard : public QObject
     Q_PROPERTY(qreal auxcalc2 READ auxcalc2 WRITE setauxcalc2 NOTIFY auxcalc2Changed)
     Q_PROPERTY(qreal auxcalc3 READ auxcalc3 WRITE setauxcalc3 NOTIFY auxcalc3Changed)
     Q_PROPERTY(qreal auxcalc4 READ auxcalc4 WRITE setauxcalc4 NOTIFY auxcalc4Changed)
-
+    Q_PROPERTY(qreal AN1 READ AN1 WRITE setAN1 NOTIFY AN1Changed)
+    Q_PROPERTY(qreal AN2 READ AN2 WRITE setAN2 NOTIFY AN2Changed)
+    Q_PROPERTY(qreal AN3 READ AN3 WRITE setAN3 NOTIFY AN3Changed)
+    Q_PROPERTY(qreal AN4 READ AN4 WRITE setAN4 NOTIFY AN4Changed)
     // Flags
 
     Q_PROPERTY(qreal Flag1 READ Flag1 WRITE setFlag1 NOTIFY flag1Changed)
@@ -315,6 +318,7 @@ public:
     void setOdo(const qreal &Odo);
     //Tripmeter
     Q_INVOKABLE void setTrip(const qreal &Trip);
+    Q_INVOKABLE void Auxcalc (const QString &unitaux1,const qreal &an1V0,const qreal &an2V5,const QString &unitaux2,const qreal &an3V0,const qreal &an4V5);
     // Advanced Info
     void setrpm(const qreal &rpm);
     void setIntakepress(const qreal &Intakepress);
@@ -363,6 +367,11 @@ public:
     void setauxcalc2(const qreal &auxcalc2);
     void setauxcalc3(const qreal &auxcalc3);
     void setauxcalc4(const qreal &auxcalc4);
+
+    void setAN1(const qreal &AN1);
+    void setAN2(const qreal &AN2);
+    void setAN3(const qreal &AN3);
+    void setAN4(const qreal &AN4);
     //Sensor Info
 
     void setsens1(const qreal &sens1);
@@ -670,6 +679,11 @@ public:
     qreal auxcalc3() const;
     qreal auxcalc4() const;
 
+    qreal AN1() const;
+    qreal AN2() const;
+    qreal AN3() const;
+    qreal AN4() const;
+
     //Sensor Voltages
 
     qreal sens1() const;
@@ -973,6 +987,11 @@ signals:
     void auxcalc3Changed(qreal auxcalc3);
     void auxcalc4Changed(qreal auxcalc4);
 
+    void AN1Changed(qreal AN1);
+    void AN2Changed(qreal AN2);
+    void AN3Changed(qreal AN3);
+    void AN4Changed(qreal AN4);
+
     //Sensor Voltages
 
     void sens1Changed(qreal sens1);
@@ -1270,6 +1289,11 @@ private:
     qreal m_auxcalc2;
     qreal m_auxcalc3;
     qreal m_auxcalc4;
+
+    qreal m_AN1;
+    qreal m_AN2;
+    qreal m_AN3;
+    qreal m_AN4;
 
     //Sensor Voltage
     qreal m_sens1;

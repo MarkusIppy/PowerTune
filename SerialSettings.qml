@@ -758,7 +758,7 @@ TabView {
                     Connect.openConnection(serialName.currentText, ecuSelect.currentIndex ,weight.currentText);
                     Connect.setOdometer(odometer.text);
                     Connect.setWeight(weight.text);
-                    Apexi.calculatorAux(an1V0.text,an2V5.text,an3V0.text,an4V5.text,unitaux1.text,unitaux2.text);
+                    Dashboard.Auxcalc(unitaux1.text,an1V0.text,an2V5.text,unitaux2.text,an3V0.text,an4V5.text);
                     connected = 1;
                 }
             }
