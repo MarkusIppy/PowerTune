@@ -859,7 +859,7 @@ TabView {
                         width: dashselector.width / 5
                         height: dashselector.height /15
                         font.pixelSize: dashselector.width / 55
-                        model: ["Main Dash", "Adaptronic","Charts", "GPS", "PowerFC Sensors","Race Dash","Race Dash Apexi","G-Force","Dyno","FuelTech","Mediaplayer","Screentoggle"]
+                        model: ["Main Dash", "Adaptronic","Charts", "GPS", "PowerFC Sensors","Dash Style 1","Dash Style 2","G-Force","Dyno","Dash Style 3","Mediaplayer"]
                         property bool initialized: true
                         onCurrentIndexChanged:{select1.selDash1() }
                         Component.onCompleted: {select1.selDash1() }
@@ -879,7 +879,7 @@ TabView {
                         width: dashselector.width / 5
                         height: dashselector.height /15
                         font.pixelSize: dashselector.width / 55
-                        model: ["Main Dash", "Adaptronic","Charts", "GPS", "PowerFC Sensors","Race Dash","Race Dash Apexi","G-Force","Dyno","FuelTech","Mediaplayer"]
+                        model: ["Main Dash", "Adaptronic","Charts", "GPS", "PowerFC Sensors","Dash Style 1","Dash Style 2","G-Force","Dyno","Dash Style 3","Mediaplayer"]
                         property bool initialized: true
                         onCurrentIndexChanged:{select2.selDash2() }
                         Component.onCompleted: {select2.selDash2() }
@@ -899,7 +899,7 @@ TabView {
                         width: dashselector.width / 5
                         height: dashselector.height /15
                         font.pixelSize: dashselector.width / 55
-                        model: ["Main Dash", "Adaptronic","Charts", "GPS", "PowerFC Sensors","Race Dash","Race Dash Apexi","G-Force","Dyno","FuelTech","Mediaplayer"]
+                       model: ["Main Dash", "Adaptronic","Charts", "GPS", "PowerFC Sensors","Dash Style 1","Dash Style 2","G-Force","Dyno","Dash Style 3","Mediaplayer"]
                         property bool initialized: true
                         onCurrentIndexChanged:{select3.selDash3() }
                         Component.onCompleted: {select3.selDash3() }
@@ -918,7 +918,7 @@ TabView {
                         width: dashselector.width / 5
                         height: dashselector.height /15
                         font.pixelSize: dashselector.width / 55
-                        model: ["Main Dash", "Adaptronic","Charts", "GPS", "PowerFC Sensors","Race Dash","Race Dash Apexi","G-Force","Dyno","FuelTech","Mediaplayer"]
+                        model: ["Main Dash", "Adaptronic","Charts", "GPS", "PowerFC Sensors","Dash Style 1","Dash Style 2","G-Force","Dyno","Dash Style 3","Mediaplayer"]
                         property bool initialized: true
                         onCurrentIndexChanged:{select4.selDash4() }
                         Component.onCompleted: {select4.selDash4() }
@@ -1549,7 +1549,7 @@ TabView {
         }
     }
     Tab {
-        title: "Apexi Dash"// Tab index 5
+        title: "Dash Config"// Tab index 5
         Rectangle{
             anchors.fill :parent
             id : apexidashsettings
@@ -2256,22 +2256,47 @@ TabView {
     Tab {
         title: "Other"// Tab index 7
 
-    Tab {
-        title: "Other"// Tab index 7
-
         Rectangle{
             id: developer
             anchors.fill: parent
             color: "black"
-            Button {
-                id: connectButton
-                text: "OBD TEST"
-                onClicked: {
-                Connect.candump()
+                Connections{
+                    target: Dashboard
+                    //onSerialStatChanged :{consoletext.append(Dashboard.SerialStat)}
+                    onSerialStatChanged :{consoletext = Dashboard.SerialStat}
                 }
+                ScrollView {
+                    id: scrollconsoletext
+                    width: 400
+                    height: parent.height
+                TextArea {
+                    id: consoletext
+                    width: scrollconsoletext.width
+                    wrapMode: TextArea.Wrap
+                    color: "white"
+                        }
+                }
+                Grid {
+                    anchors.top :parent.top
+                    anchors.topMargin: parent.height / 20
+                    anchors.right: parent.right
+                    rows: 10
+                    columns: 2
+                    spacing: parent.width /150
+                Button {
+                    id: candump
+                    text: "OBD Test"
+                    onClicked: Connect.candump()
+                }
+                /*
+                Button {
+                    id: update
+                    text: "Update"
+                    onClicked: Connect.update()
+                    }
+                    */
+
             }
-
-
         }
     }
 }

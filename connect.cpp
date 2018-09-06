@@ -849,7 +849,7 @@ void Connect::candump()
     {
       p->setEnvironment( QProcess::systemEnvironment() );
       p->setProcessChannelMode( QProcess::MergedChannels );
-      p->start( "/home/pi/daemons/OBD /dev/ttyUSB0", QStringList() << "echo" << "hye" );
+      p->start( "/daemons/OBD /dev/ttyUSB0", QStringList() << "echo" << "hye" );
       p->waitForStarted();
 
       connect( p, SIGNAL(readyReadStandardOutput()), this, SLOT(processOutput()) );
