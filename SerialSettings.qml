@@ -2256,16 +2256,18 @@ TabView {
     Tab {
         title: "Other"// Tab index 7
 
+    Tab {
+        title: "Other"// Tab index 7
+
         Rectangle{
             id: developer
             anchors.fill: parent
             color: "black"
             Button {
                 id: connectButton
-                text: "Request licence"
-
+                text: "OBD TEST"
                 onClicked: {
-                Connect.RequestLicence()
+                Connect.candump()
                 }
             }
 
