@@ -7,43 +7,46 @@ Item {
     anchors.fill: parent
     Rectangle{
         anchors.fill: parent
-
         Plugin {
             id: mapPlugin
             name: "osm" // "mapboxgl", "esri", ...
+            //Offline directory for Map Tiles
             PluginParameter {
+                //name: "osm.mapping.custom.host"
                 name: 'osm.mapping.offline.directory'
-                value: 'file:///offline_tiles/'
+                value: ':/GPSTracks/'
             }
+            //Disable to Fetch Map Data from the Server
+            /*PluginParameter {
+               name: "osm.mapping.providersrepository.disabled"
+               value: true
+            }*/
         }
 
         Map {
+            id: map
             anchors.fill: parent
             plugin: mapPlugin
-            center: QtPositioning.coordinate(-25.804499,28.301012)
-            zoomLevel: 16
+            //center: QtPositioning.coordinate(-34.840764,149.686800)
+            //center: QtPositioning.coordinate(40.57500,-112.37472) //Utah Motorsport Park
+            center: QtPositioning.coordinate(-26.074278, 28.752637)// Redstar Raceway South Africa
+            zoomLevel: 15
 
-            // Draw the outline of Zwartkops Raceway in South Africa onto the map
-            MapPolyline {
-                id: myhometest
-                line.width: 12
-                line.color: 'blue'
-                path: [
+            activeMapType: map.supportedMapTypes[1]
+            copyrightsVisible : false
+            gesture.enabled: true
+            tilt: 0
+            color: "black"
 
-                    {latitude: -25.804287, longitude: 28.300355}, // Start/Finish Line
-                    {latitude: -25.804801, longitude: 28.301865}, // Start corner 1
 
-                ]
-            }
-
-            // Draw a small circle for current Vehicle Location
+            // Draw a small red circle for current Vehicle Location
             MapQuickItem {
                 id: marker
                 anchorPoint.x: 10
                 anchorPoint.y: 10
                 width: 15
-                coordinate: QtPositioning.coordinate(Dashboard.gpsLatitude,Dashboard.gpsLongitude)
-
+                //coordinate: QtPositioning.coordinate(Dashboard.gpsLatitude,Dashboard.gpsLongitude)
+                coordinate: QtPositioning.coordinate(-34.840764,149.686800)
                 sourceItem: Rectangle {
                     id: image
                     width:20
