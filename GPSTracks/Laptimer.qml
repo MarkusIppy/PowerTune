@@ -9,32 +9,38 @@ Item {
         anchors.fill: parent
         Plugin {
             id: mapPlugin
-            name: "osm" // "mapboxgl", "esri", ...
+            name: "osm"
             //Offline directory for Map Tiles
             PluginParameter {
-                //name: "osm.mapping.custom.host"
                 name: 'osm.mapping.offline.directory'
                 value: ':/GPSTracks/'
             }
             //Disable to Fetch Map Data from the Server
-            /*PluginParameter {
+            PluginParameter {
                name: "osm.mapping.providersrepository.disabled"
                value: true
-            }*/
+            }
+
+            //provide the address of the tile server to the plugin
+            PluginParameter {
+               name: "osm.mapping.custom.host"
+               value: "http://localhost/osm/"
+            }
+
         }
 
         Map {
             id: map
             anchors.fill: parent
             plugin: mapPlugin
-            //center: QtPositioning.coordinate(-34.840764,149.686800)
+            center: QtPositioning.coordinate(-34.840764,149.686800) //
             //center: QtPositioning.coordinate(40.57500,-112.37472) //Utah Motorsport Park
-            center: QtPositioning.coordinate(-26.074278, 28.752637)// Redstar Raceway South Africa
-            zoomLevel: 15
+            //center: QtPositioning.coordinate(-26.074278, 28.752637)// Redstar Raceway South Africa
+            zoomLevel: 16
 
             activeMapType: map.supportedMapTypes[1]
             copyrightsVisible : false
-            gesture.enabled: true
+            gesture.enabled: false
             tilt: 0
             color: "black"
 
@@ -45,8 +51,8 @@ Item {
                 anchorPoint.x: 10
                 anchorPoint.y: 10
                 width: 15
-                //coordinate: QtPositioning.coordinate(Dashboard.gpsLatitude,Dashboard.gpsLongitude)
-                coordinate: QtPositioning.coordinate(-34.840764,149.686800)
+                coordinate: QtPositioning.coordinate(Dashboard.gpsLatitude,Dashboard.gpsLongitude)
+                //coordinate: QtPositioning.coordinate(-34.840764,149.686800)
                 sourceItem: Rectangle {
                     id: image
                     width:20
