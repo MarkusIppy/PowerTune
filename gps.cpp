@@ -369,7 +369,7 @@ void GPS::startGPScom(const QString &portName)
 
 
 
-    com->setPortName(portName);
+    com->setPortName("COM7");
     com->open(QSerialPort::ReadOnly);
     com->setBaudRate(QSerialPort::Baud4800);
     com->setDataBits(QSerialPort::Data8);

@@ -16,16 +16,15 @@ Item {
                 value: ':/GPSTracks/'
             }
             //Disable to Fetch Map Data from the Server
-            PluginParameter {
-               name: "osm.mapping.providersrepository.disabled"
-               value: true
-            }
+                       PluginParameter {
+                          name: "osm.mapping.providersrepository.disabled"
+                          value: true
+                       }
+                       PluginParameter {
+                          name: "osm.mapping.providersrepository.address"
+                          value: 'qrc:/GPSTracks/'
+                       }
 
-            //provide the address of the tile server to the plugin
-            PluginParameter {
-               name: "osm.mapping.custom.host"
-               value: "http://localhost/osm/"
-            }
 
         }
 
