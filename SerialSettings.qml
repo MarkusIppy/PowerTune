@@ -579,8 +579,8 @@ TabView {
                                 width: windowbackround.width / 10
                                 height: windowbackround.height /15
                                 font.pixelSize: windowbackround.width / 55
-                                validator: IntValidator {bottom: 0; top: 1000;}
-                                inputMethodHints: Qt.ImhDigitsOnly
+                                validator: IntValidator {bottom: -1000; top: 1000;}
+                                //inputMethodHints: Qt.ImhDigitsOnly
                                 placeholderText: qsTr("9")
                             }
                             TextField {
@@ -588,8 +588,8 @@ TabView {
                                 width: windowbackround.width / 10
                                 height: windowbackround.height /15
                                 font.pixelSize: windowbackround.width / 55
-                                validator: IntValidator {bottom: 0; top: 1000;}
-                                inputMethodHints: Qt.ImhDigitsOnly
+                                validator: IntValidator {bottom: -1000; top: 1000;}
+                                //inputMethodHints: Qt.ImhDigitsOnly
                                 placeholderText: qsTr("16")
                             }
 
@@ -606,8 +606,8 @@ TabView {
                                 width: windowbackround.width / 10
                                 height: windowbackround.height /15
                                 font.pixelSize: windowbackround.width / 55
-                                validator: IntValidator {bottom: 0; top: 1000;}
-                                inputMethodHints: Qt.ImhDigitsOnly
+                                validator: IntValidator {bottom: -1000; top: 1000;}
+                                //inputMethodHints: Qt.ImhDigitsOnly
                                 placeholderText: qsTr("Value @ 0V")
 
                             }
@@ -616,8 +616,8 @@ TabView {
                                 width: windowbackround.width / 10
                                 height: windowbackround.height /15
                                 font.pixelSize: windowbackround.width / 55
-                                validator: IntValidator {bottom: 0; top: 1000;}
-                                inputMethodHints: Qt.ImhDigitsOnly
+                                validator: IntValidator {bottom: -1000; top: 1000;}
+                                //inputMethodHints: Qt.ImhDigitsOnly
                                 placeholderText: qsTr("Value @ 5V")
                             }
                             TextField {
@@ -633,14 +633,14 @@ TabView {
                     TextField {
                         id: an5V0
                         windowbackround.width /12
-                        validator: IntValidator {bottom: 0; top: 1000;}
+                        validator: IntValidator {bottom: -1000; top: 1000;}
                         placeholderText: qsTr("Value @ 0V")
                         visible: { (interfaceSelect.currentIndex == "1") ? true: false; }
                     }
                     TextField {
                         id: an6V5
                         windowbackround.width /12
-                        validator: IntValidator {bottom: 0; top: 1000;}
+                        validator: IntValidator {bottom: -1000; top: 1000;}
                         placeholderText: qsTr("Value @ 5V")
                         visible: { (interfaceSelect.currentIndex == "1") ? true: false; }
                     }
@@ -654,14 +654,14 @@ TabView {
                     TextField {
                         id: an7V0
                         windowbackround.width /12
-                        validator: IntValidator {bottom: 0; top: 1000;}
+                        validator: IntValidator {bottom: -1000; top: 1000;}
                         placeholderText: qsTr("Value @ 0V")
                         visible: { (interfaceSelect.currentIndex == "1") ? true: false; }
                     }
                     TextField {
                         id: an8V5
                         windowbackround.width /12
-                        validator: IntValidator {bottom: 0; top: 1000;}
+                        validator: IntValidator {bottom: -1000; top: 1000;}
                         placeholderText: qsTr("Value @ 5V")
                         visible: { (interfaceSelect.currentIndex == "1") ? true: false; }
                     }
